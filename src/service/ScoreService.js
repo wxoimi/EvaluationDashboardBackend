@@ -25,6 +25,12 @@ const addScoreToStudent = async (mentorId, studentId, data) => {
   }
 
   const { ideationScore, executionScore, vivaPatchScore } = data;
+  if(ideationScore>10||executionScore>10||vivaPatchScore>10){
+    throw new ClientError({
+      message: "Score more than 10",
+      explanation: "You can not assign Score more than 10",
+    });
+  }
   const total =
     Number(ideationScore) + Number(executionScore) + Number(vivaPatchScore);
 
@@ -81,6 +87,12 @@ const editScore = async (mentorId, studentId, newScore) => {
   }
 
   // Check if the score has already been submitted
+  if(newScore.ideationScore>10||newScore.executionScore>10||newScore.vivaPatchScore>10){
+    throw new ClientError({
+      message: "Score more than 10",
+      explanation: "You can not assign Score more than 10",
+    });
+  }
 
   const total =
     (Number(newScore.ideationScore) || score.IdeationScore) +
