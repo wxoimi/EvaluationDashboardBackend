@@ -78,7 +78,7 @@ const editScore = async (mentorId, studentId, newScore) => {
       explanation: "The given student is not assigned to the mentor",
     });
   }
-  const score = await Score.findOne({ where: { StudentId: student.id } });
+  const score = await Score.findOne({ where: { studentId: student.id } });
   if (!score) {
     throw new ClientError({
       message: "Score does not exist",
