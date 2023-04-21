@@ -50,7 +50,7 @@ const removeStudent = async (mentorId, studentId) => {
       explaination: "The given MentorId is not assigned to this Student",
     });
   }
-  const score = await Score.findOne({ where: { StudentId: studentId } });
+  const score = await Score.findOne({ where: { studentId: studentId } });
 
   if (mentor && mentor.finalSubmit) {
     throw new ClientError({
